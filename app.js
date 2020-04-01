@@ -31,6 +31,10 @@ function startApp(port){
         res.end();
     });
 
+    app.get('/multiverso/m1', (req, res)=>{
+        res.render('m1');
+    });
+
     app.get('*', function getAny(req,res){
 		res.write('404 | Not found');
     });
