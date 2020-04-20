@@ -21,7 +21,16 @@ const sout = function sout(...args) {
   console.log(args);
 };
 
+const isNullOrEmpty = function isNullOrEmpty(str) {
+  try {
+    return (!str || /^\s*$/.test(str));
+  } catch (err) {
+    console.log('Error at isNullOrEmpty. Value: ['+str+'].');
+    return true;
+  }
+};
+
 module.exports = {
-  jparse, logerror, loginfo, sout,
+  jparse, logerror, loginfo, sout, isNullOrEmpty,
 };
 
