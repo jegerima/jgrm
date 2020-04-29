@@ -19,6 +19,7 @@ module.exports.getRouter = function getRouter(m, logger) {
       {id: 1, title: 'Reparación de Casa', description: 'Hay una fuga de agua en la pared'},
       {id: 2, title: 'Limpieza de auto', description: 'Necesito lavar mi Audi Q5'},
       {id: 3, title: 'Desarrollo de app uber', description: 'Simple. Una app parecida a uber eats en menos de 4 meses'},
+      {id: 3, title: 'Declaración de IVA Gran empresa', description: 'Realizar la declaración de impuestos desde el mes de Enero del 2020 hasta la fecha actual'},
     ];
 
     res.send(jparse(true, 'Anuncios', {ads: ads}));
@@ -27,11 +28,11 @@ module.exports.getRouter = function getRouter(m, logger) {
   router.get('/getAllCategories', function(req, res) {
     const categories = [
       {id: 1, name: 'Limpieza'},
-      {id: 2, name: 'PLomeria'},
+      {id: 2, name: 'Plomeria'},
       {id: 3, name: 'Electricidad'},
       {id: 4, name: 'Vehículos'},
       {id: 5, name: 'Aires Acondicionados'},
-      {id: 6, name: 'Limpieza'},
+      // {id: 6, name: 'Limpieza'},
       {id: 7, name: 'Jardinería'},
       {id: 8, name: 'Belleza'},
       {id: 9, name: 'Control de plagas'},
@@ -49,6 +50,50 @@ module.exports.getRouter = function getRouter(m, logger) {
     ];
 
     res.send(jparse(true, 'Categorías', {categories: categories}));
+  });
+
+  router.get('/categories/:id/getAllSubcategories', function(req, res) {
+    const catID = parseInt(req.params.id);
+    if (isNaN(catID)) {
+      res.send(jparse(false, 'Categoria invalida'));
+      return;
+    }
+    if (catID>20 || catID<0) {
+      res.send(jparse(false, 'Categoria invalida'));
+      return;
+    }
+    const subcategoriesRaw = [
+      ['Zero'],
+      ['Limpieza de casa', 'Limpieza de autos', 'Limpieza de muebles', 'Limpieza de cisternas', 'Limpieza de techo'],
+      ['Baños'],
+      ['Instalación electrica', 'Revisión de cableado', 'Prueba de potencia'],
+      ['Cambio de llantas', 'Revision de frenos', 'Sistema de escape', 'Accesorios', 'Mantenimiento preventivo', 'Pulida de vidrios'],
+      ['Instalación de aires', 'Mantenimiento de aires'],
+      ['Nada'],
+      ['Mantenimiento de jardín', 'Fumigación de jardín', 'Abono de jardín'],
+      ['Manicure', 'Pedicure', 'Corte de Cabello', 'Peinado y cepillado', 'Maquillaje', 'Tratamientos'],
+      ['Fumigación de insectos', 'Aplicación de químicos'],
+      ['Lavado de ropa', 'Planchado de ropa', 'Tintado de ropa'],
+      ['Cuidado de niños', 'Cuidado de adultos mayores', 'Cuidado de personas especiales'],
+      ['Paseo de Mascotas', 'Cuidado de mascotas', 'Veterinarios a casa'],
+      ['Medico General', 'Oftalmologo', 'Cardiologo', 'Otorrinolaringologo', 'Enfermeria', 'Pediatria', 'Dermatologo', 'Traumatologo', 'Psicologo', 'Psiquiatra', 'Geriatra'],
+      ['Declaración de impuestos', 'Retencion del IVA'],
+      ['Instalacion de software', 'Ensamblaje de computadores', 'Reparacion de computadores'],
+      ['Ingles', 'Fisica', 'Matematica', 'Quimica', 'Lenguaje'],
+      ['Mantenimiento de tvs, minicomponentes', 'Consulta y reparacion'],
+      ['Pintado de fachadas', 'Pintado de interiores', 'Decoracion de interiores'],
+      ['Decoracion de eventos', 'Planificacion de bodas', 'Planificacion de bautizo'],
+      ['Proyectos industriales', 'Proyectos de Software', 'Proyectos de mecánica', 'Consultoría'],
+      ['Pos21'],
+    ];
+
+    const subcategories = [];
+    for (let z = 0; z<subcategoriesRaw[catID].length; z++) {
+      const subCat = subcategoriesRaw[catID][z];
+      subcategories.push({id: catID*100 + z, name: subCat});
+    }
+
+    res.send(jparse(true, 'Subcategorias', {subcategories: subcategories}));
   });
 
   router.post('/login', function(req, res) {
