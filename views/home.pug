@@ -1,0 +1,257 @@
+doctype html
+html(lang="es")
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(name="description" content="Landing for jegerima.dev")
+        meta(name="author" content="@jegerima")
+
+        meta(property="og:site_name" content="Home .: Jefferson Rivera")
+        meta(property="og:title" content="Landing .: jegerima.dev")
+        meta(property="og:image" content="https://jegerima.dev/public/images/jegerima.jpg")
+        meta(property="og:url" content="https://jegerima.dev")
+        meta(property="og:description" content="Information about me and projects. Maybe a few other interesting things")
+
+        title Jefferson Rivera
+
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css")
+        link(rel="icon", href="/public/images/dev_favicon_72.png")
+
+        style.
+            body{
+                font-family: 'Lato', sans-serif;
+                background: #EFEFEF;
+            }
+
+            .projects .card-image{
+                padding: 16px;
+                height: 160px;
+            }
+
+            .projects .card-image>img{
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                margin: auto;
+            }
+
+            .projects .card-content{
+                border-top: 1px solid rgba(160,160,160,0.2);
+            }
+
+            .projects .card-content .card-title{
+                color: #ff9800;
+            }
+
+            .projects .card .links{
+                margin-top: 1rem;
+            }
+
+            .projects .card .links>a{
+                cursor:pointer;
+                margin-right: 1rem;
+                color: grey;
+            }
+
+            .projects .card .links>a:hover{
+                color: #ff9800;
+            }
+
+            .github-link, .twitter-link{
+                color: black;
+                margin-right: 1rem;
+            }
+
+            .github-link:hover{
+                color: #ff9800;
+            }
+
+            .twitter-link:hover{
+                color: #00acee;
+            }
+
+            .no-padding{
+                padding: 0px !important;
+            }
+
+            .page-title{
+                margin: 4rem 0px 4rem 0px;
+            }
+
+            .personal-links{
+                padding: 1rem !important;
+            }
+
+            .card-content>p{
+                min-height: 84px;
+            }
+
+            /* Media Queries */
+            @media only screen and (max-width: 600px){
+
+            }
+
+            @media only screen and (max-width: 992){
+                
+            }
+
+            @media only screen and (min-width: 993px){
+                .card-action{
+                    height: 107px;
+                }
+            }
+
+            @media only screen and (min-width: 1480px){
+                .card-action{
+                    height: auto;
+                }
+            }
+
+    body
+
+        .container
+
+            .row.page-title
+                .col.s12.center
+                    span(style="font-family: Monaco, monospace; padding: 1rem; font-size: 2rem; text-align: center;")
+                        b jegerima.dev
+                .col.s12.center.personal-links
+                    span
+                        a.github-link(href="https://github.com/jegerima", target="_blank")
+                            i.fab.fa-github.fa-2x
+                    span
+                        a.twitter-link(href="https://twitter.com/jegerima", target="_blank")
+                            i.fab.fa-twitter.fa-2x
+
+
+
+            .row
+                .col.s12
+                    h4 Proyectos
+            .row.projects
+                .col.s12.m6.l4.xl4
+                    .card
+                        .card-image
+                            img(src="/public/images/ddd_full_480.png", style="position: absolute; padding: 16px;")
+                        .card-content
+                            span.card-title DingDong 
+                            p Plataforma para pedidos a domicilio, manejo de locales, gestión productos y personal.
+                            .links
+                                a(href="https://www.facebook.com/dingdongec/", target="_blank")
+                                    i.fab.fa-facebook.fa-2x
+                                a(href="https://play.google.com/store/apps/details?id=com.jegerima.dingdong", target="_blank")
+                                    i.fab.fa-google-play.fa-2x
+                        .card-action
+                            .chip.amber.white-text Propio
+                            .chip Android
+                            .chip JavaEE
+
+
+                .col.s12.m6.l4.xl4
+                    .card
+                        .card-image
+                            img(src="/public/images/gruposedei.png", style="position: absolute; padding: 16px;")
+                        .card-content
+                            span.card-title Sedei 
+                            p Aplicativo Web que maneja el inventario, salida e ingreso de productos aduaneros.
+                            .links(href="https://www.facebook.com/gruposedei/", target="_blank")
+                                a
+                                    i.fab.fa-facebook.fa-2x
+                        .card-action
+                            .chip Node.js
+                            .chip HTML5
+                            .chip Postgres
+
+                .col.s12.m6.l4.xl4
+                    .card
+                        .card-image.no-padding
+                            img(src="/public/images/misolution_480.png")
+                            
+                        .card-content
+                            span.card-title Mi Solution
+                            p Plataforma compuesta de servidor y app movil para la reserva de limpieza a domicilio.
+                            .links
+                                a(href="https://www.facebook.com/misolutionec", target="_blank")
+                                    i.fab.fa-facebook.fa-2x
+                                a(href="https://play.google.com/store/apps/details?id=com.jegerima.acristudio.limpalbet", target="_blank")
+                                    i.fab.fa-google-play.fa-2x
+                                a(href="https://limpalbet.com/", target="_blank")
+                                    i.fas.fa-globe.fa-2x
+                        .card-action
+                            .chip Android
+                            .chip Node.js
+                            .chip Mysql
+                
+                .col.s12.m6.l4.xl4
+                    .card
+                        .card-image
+                            img(src="/public/images/akku_480.png", style="position: absolute; padding: 16px;")
+                        .card-content
+                            span.card-title Akku
+                            p Software integrado que permite rentar power banks y cobrar por su tiempo de uso.
+                            .links
+                                
+                                a(href="https://www.instagram.com/theakkuapp/", target="_blank")
+                                    i.fab.fa-instagram.fa-2x
+                                a(href="https://play.google.com/store/apps/details?id=com.jegerima.yideasa.akkuexpress.android", target="_blank")
+                                    i.fab.fa-google-play.fa-2x
+                                a(href="https://apps.apple.com/us/app/akk%C3%BA/id1475596809", target="_blank")
+                                    i.fab.fa-app-store-ios.fa-2x
+                                a(href="https://akkuapp.com/", target="_blank")
+                                    i.fas.fa-globe.fa-2x
+                        .card-action
+                            .chip Node.js
+                            .chip Android
+                            .chip iOS
+                            .chip Flutter
+
+                .col.s12.m6.l4.xl4
+                    .card
+                        .card-image
+                            img(src="/public/images/dev_favicon.png")
+                        .card-content
+                            span.card-title NTR-0001
+                            p Proyecto propio en fase de desarrollo. Servidor, AppMovil, etc. #ComingSoon
+                            .links
+                                a#soon
+                                    i.fas.fa-question.fa-2x
+                        .card-action
+                            .chip.amber.white-text Propio
+                            .chip EnDesarrollo
+                            .chip Flutter
+
+
+    //script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    //script(src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
+    script.
+        function animateCSS(element, animationName, callback) {
+            const node = document.querySelector(element)
+            node.classList.add('animated', animationName)
+
+            function handleAnimationEnd() {
+                node.classList.remove('animated', animationName)
+                node.removeEventListener('animationend', handleAnimationEnd)
+
+                if (typeof callback === 'function') callback()
+            }
+
+            node.addEventListener('animationend', handleAnimationEnd)
+        }
+
+    script.
+        var counter = 1;
+        document.getElementById('soon').addEventListener('click',comingSoon);
+        function comingSoon(){
+            if(counter == 20){
+                M.toast({html: 'Ok! You can email me at jegerima @ gmail dot com', displayLength: 8000 });
+            }
+            var message = 'Keep in touch!'
+            if(counter%5==0) message = message+" (" + counter + " times)";
+            M.toast({html: message});
+            counter++;
+        }

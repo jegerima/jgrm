@@ -33,9 +33,12 @@ function startApp(port) {
   });
 
   app.get('/', (req, res) => {
+    res.render('home');
+    /*
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write('<p style="font-family: Monaco, monospace; padding: 1rem;"><b>jegerima.dev</b> is under construction<p>');
     res.end();
+    */
   });
 
   app.get('/multiverso/m1', (req, res) => {
