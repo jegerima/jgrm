@@ -62,3 +62,8 @@ typings/
 
 # macos
 .DS_Store
+
+#cypress
+cypress/plugins
+cypress/support
+cypress/videos
