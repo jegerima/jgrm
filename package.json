@@ -4,7 +4,9 @@
   "description": "Source code for jegerima.dev",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint './**/*.{js,jsx}'",
+    "eslintwin": "eslint .\\**\\*.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +28,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
-    "eslint": "^8.11.0",
+    "eslint": "^8.14.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-vue": "^6.2.2"
   },
