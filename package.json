@@ -4,6 +4,7 @@
   "description": "Source code for jegerima.dev",
   "main": "app.js",
   "scripts": {
+    "build": "echo \"No builds for now\" && exit 0",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint './**/*.{js,jsx}'",
     "eslintwin": "eslint .\\**\\*.js",
