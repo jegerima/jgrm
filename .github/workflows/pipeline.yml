@@ -8,13 +8,17 @@ on:
     branches: [master]
 
 jobs:
-  deploy: 
+  avoid_redundancy:
     runs-on: ubuntu-18.04
     steps:
       - name: Cancel previous redundant build
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           acces_token: ${{ github.token }}
+  
+  lint:
+    runs-on: ubuntu-18.04
+    steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -27,12 +31,54 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run eslint
+  
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Installing Node.js enviroment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      #- uses: actions/upload-artifact@v2
+      #  with:
+      #    name: dist
+      #    path: dist
+
+  e2etest:
+    needs: [lint, build]
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Installing Node.js enviroment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install dependencies
+        run: npm ci
       - name: E2E Test
         uses: cypress-io/github-action@v2
         with:
           command: npm run test:e2e
           start: npm run start-test
           wait-on: http://localhost:8011
+
+
+  deploy: 
+    needs: [e2etest]
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Deploy to Digital Ocean
         if: ${{ github.event_name == 'push' }}
         run: echo "Time to DO"
