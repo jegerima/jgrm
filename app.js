@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const cors = require('cors');
 
 const helpers = require('./utils/helpers');
+const version = require('./package.json').version;
 
 const mwJobu = require('./middlewares/mw_jobu');
 const rtJobu = require('./routers/rt_jobu');
@@ -35,6 +36,10 @@ function startApp(port) {
     res.write('<p style="font-family: Monaco, monospace; padding: 1rem;"><b>jegerima.dev</b> is under construction<p>');
     res.end();
     */
+  });
+
+  app.get('/version', (req, res) => {
+    res.send(version);
   });
 
   app.get('/multiverso/m1', (req, res) => {
