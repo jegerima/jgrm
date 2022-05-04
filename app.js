@@ -26,7 +26,7 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 logger.configure({
   transports: [
     new (logger.transports.Console)(),
-    new (logger.transports.File)({ filename: 'logs/app-js.log' }),
+    new (logger.transports.File)({filename: 'logs/app-js.log'}),
   ],
 });
 
@@ -48,7 +48,7 @@ app.get('/multiverso/m1', (req, res) => {
 });
 
 app.use('/jobu', cors());
-//app.use('/jobu', mwJobu);
+app.use('/jobu', mwJobu);
 app.use('/jobu', rtJobu.getRouter(null, logger));
 
 app.get('*', function getAny(req, res) {

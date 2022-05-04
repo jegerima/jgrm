@@ -5,9 +5,9 @@ const api = supertest(app);
 
 test('Responses are in json', async () => {
   await api
-    .get('/jobu/getAllAds')
-    .expect(200)
-    .expect('Content-Type', /application\/json/);
+      .get('/jobu/getAllAds')
+      .expect(200)
+      .expect('Content-Type', /application\/json/);
 });
 
 test('Response has 4 objects', async ()=>{
@@ -24,4 +24,4 @@ test('First object is about agua', async ()=>{
 
 afterAll(()=> {
   server.close();
-})
+});

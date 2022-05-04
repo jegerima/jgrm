@@ -12,6 +12,6 @@
         "sourceType": "module"
     },
     "rules": {
-        "windows": true
+        "linebreak-style": 0
     }
 }
