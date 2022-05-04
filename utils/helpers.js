@@ -30,7 +30,12 @@ const isNullOrEmpty = function isNullOrEmpty(str) {
   }
 };
 
+const palindrome = function(str) {
+  if(typeof str == 'undefined') return;
+  return str.split('').reverse().join('')
+};
+
 module.exports = {
-  jparse, logerror, loginfo, sout, isNullOrEmpty,
+  jparse, logerror, loginfo, sout, isNullOrEmpty, palindrome
 };
 
