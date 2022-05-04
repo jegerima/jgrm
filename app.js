@@ -16,46 +16,46 @@ const rtJobu = require('./routers/rt_jobu');
  * Adds two numbers together.
  * @param {int} port Port of server.
  */
-function startApp(port) {
-  const app = express();
-  app.set('view engine', 'pug');
-  app.use('/public', express.static('static'));
-  app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 
-  logger.configure({
-    transports: [
-      new (logger.transports.Console)(),
-      new (logger.transports.File)({filename: 'logs/app-js.log'}),
-    ],
-  });
+const app = express();
+const port = process.env.PORT | 8011;
+app.set('view engine', 'pug');
+app.use('/public', express.static('static'));
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 
-  app.get('/', (req, res) => {
-    res.render('home');
-    /*
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write('<p style="font-family: Monaco, monospace; padding: 1rem;"><b>jegerima.dev</b> is under construction<p>');
-    res.end();
-    */
-  });
+logger.configure({
+  transports: [
+    new (logger.transports.Console)(),
+    new (logger.transports.File)({ filename: 'logs/app-js.log' }),
+  ],
+});
 
-  app.get('/version', (req, res) => {
-    res.send(version);
-  });
+app.get('/', (req, res) => {
+  res.render('home');
+  /*
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write('<p style="font-family: Monaco, monospace; padding: 1rem;"><b>jegerima.dev</b> is under construction<p>');
+  res.end();
+  */
+});
 
-  app.get('/multiverso/m1', (req, res) => {
-    res.render('m1');
-  });
+app.get('/version', (req, res) => {
+  res.send(version);
+});
 
-  app.use('/jobu', cors());
-  app.use('/jobu', mwJobu);
-  app.use('/jobu', rtJobu.getRouter(null, logger));
+app.get('/multiverso/m1', (req, res) => {
+  res.render('m1');
+});
 
-  app.get('*', function getAny(req, res) {
-    res.send('404 | Not found');
-  });
+app.use('/jobu', cors());
+//app.use('/jobu', mwJobu);
+app.use('/jobu', rtJobu.getRouter(null, logger));
 
-  app.listen(port);
-  helpers.sout('Main server running on port', port);
-};
+app.get('*', function getAny(req, res) {
+  res.send('404 | Not found');
+});
 
-startApp(process.env.PORT | 8011);
+const server = app.listen(port);
+helpers.sout('Main server running on port', port);
+
+module.exports = {app, server};
