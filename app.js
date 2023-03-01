@@ -5,6 +5,7 @@ const express = require('express');
 const logger = require('winston');
 const morgan = require('morgan');
 const cors = require('cors');
+const twilio = require('twilio')();
 
 const helpers = require('./utils/helpers');
 const version = require('./package.json').version;
@@ -40,6 +41,19 @@ app.get('/version', (req, res) => {
 
 app.get('/multiverso/m1', (req, res) => {
   res.render('m1');
+});
+
+app.get('/citabot/notify', (req, res) => {
+  if(req.query.token=='watagatapitusberry') {
+    twilio.messages.create({
+      from: 'whatsapp:+14155238886',
+      body: 'Check new date! ' + req.query.date ?? "empty",
+      to: 'whatsapp:+593991121022'
+    })
+    res.json({status: true});
+  }else{
+    res.json({status: false});
+  }
 });
 
 app.use('/jobu', cors());

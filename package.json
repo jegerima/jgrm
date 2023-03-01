@@ -8,8 +8,6 @@
     "test": "NODE_ENV=test jest --verbose",
     "testwin": "cross-env NODE_ENV=test jest --verbose --silent tests/jobu.test.js",
     "testwin:watch": "npm run testwin -- --watch",
-    "eslint": "eslint './**/*.{js,jsx}'",
-    "eslintwin": "eslint .\\**\\*.js",
     "start": "node app.js",
     "start-test": "NODE_ENV=test node app.js",
     "test:e2e": "npx cypress run"
@@ -32,12 +30,6 @@
   },
   "homepage": "https://github.com/jegerima/jgrm#readme",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.9.0",
-    "@typescript-eslint/parser": "^2.9.0",
-    "cypress": "^10.9.0",
-    "eslint": "^8.25.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-plugin-vue": "^6.2.2",
     "jest": "^28.0.3",
     "supertest": "^6.2.3"
   },
@@ -50,7 +42,7 @@
     "formidable": "^1.2.1",
     "morgan": "^1.9.1",
     "pug": "^3.0.1",
-    "typescript": "^3.7.2",
+    "twilio": "^4.8.0",
     "winston": "^3.2.1"
   },
   "jest": {
