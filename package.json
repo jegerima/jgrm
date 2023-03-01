@@ -42,7 +42,7 @@
     "formidable": "^1.2.1",
     "morgan": "^1.9.1",
     "pug": "^3.0.1",
-    "twilio": "^4.8.0",
+    "twilio": "3.84.1",
     "winston": "^3.2.1"
   },
   "jest": {
