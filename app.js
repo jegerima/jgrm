@@ -47,7 +47,7 @@ app.get('/citabot/notify', (req, res) => {
   if(req.query.token=='watagatapitusberry') {
     twilio.messages.create({
       from: 'whatsapp:+14155238886',
-      body: 'Check new date! ' + req.query.date ?? "empty",
+      body: 'Check new date! ' + req.query.date,
       to: 'whatsapp:+593991121022'
     })
     res.json({status: true});
