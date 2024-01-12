@@ -61,7 +61,7 @@ app.use('/jobu', mwJobu);
 app.use('/jobu', rtJobu.getRouter(null, logger));
 
 app.get('/projects/validate', (req, res) => {
-  const host = req.get('host') ?? '';
+  const host = req.get('host') || '';
   const validSites = ['pinlet', 'xcore'];
   const isValidSite = validSites.some((site) => host.includes(site));
 
