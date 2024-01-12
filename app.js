@@ -62,13 +62,13 @@ app.use('/jobu', rtJobu.getRouter(null, logger));
 
 app.use('/projects', cors());
 app.get('/projects/validate', (req, res) => {
-  const host = req.get('host') || '';
+  const origin = req.get('origin') || '';
   const validSites = ['pinlet', 'xcore'];
-  const isValidSite = validSites.some((site) => host.includes(site));
+  const isValidSite = validSites.some((site) => origin.includes(site));
 
-  console.log(req.get('host'), 'is valid:', isValidSite);
-
-  res.json({ host: host, status: isValidSite });
+  console.log(req.get('origin'), 'is valid:', isValidSite);
+  
+  res.json({ origin: origin, status: isValidSite });
 });
 
 app.get('*', function getAny(req, res) {
