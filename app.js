@@ -60,6 +60,7 @@ app.use('/jobu', cors());
 app.use('/jobu', mwJobu);
 app.use('/jobu', rtJobu.getRouter(null, logger));
 
+app.use('/projects', cors());
 app.get('/projects/validate', (req, res) => {
   const host = req.get('host') || '';
   const validSites = ['pinlet', 'xcore'];
