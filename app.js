@@ -60,6 +60,16 @@ app.use('/jobu', cors());
 app.use('/jobu', mwJobu);
 app.use('/jobu', rtJobu.getRouter(null, logger));
 
+app.get('/projects/validate', (req, res) => {
+  const host = req.get('host') ?? '';
+  const validSites = ['pinlet', 'xcore'];
+  const isValidSite = validSites.some((site) => host.includes(site));
+
+  console.log(req.get('host'), 'is valid:', isValidSite);
+
+  res.json({ host: host, status: isValidSite });
+});
+
 app.get('*', function getAny(req, res) {
   res.send('404 | Not found');
 });
