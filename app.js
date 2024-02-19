@@ -68,7 +68,8 @@ app.get('/projects/validate', (req, res) => {
 
   console.log(req.get('origin'), 'is valid:', isValidSite);
   
-  res.json({ origin: origin, status: isValidSite });
+  res.json({ origin: origin, status: true }); //All sites true
+  // res.json({ origin: origin, status: isValidSite });
 });
 
 app.get('*', function getAny(req, res) {
