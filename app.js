@@ -43,6 +43,10 @@ app.get('/multiverso/m1', (req, res) => {
   res.render('m1');
 });
 
+app.get('/beib', (req, res) => {
+  res.render('beib');
+});
+
 app.get('/citabot/notify', (req, res) => {
   if(req.query.token=='watagatapitusberry') {
     twilio.messages.create({
