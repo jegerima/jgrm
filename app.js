@@ -40,11 +40,11 @@ app.get('/version', (req, res) => {
 });
 
 app.get('/multiverso/m1', (req, res) => {
-  res.render('m1');
+  res.render('m1redirect');
 });
 
 app.get('/beib', (req, res) => {
-  res.render('beib');
+  res.render('missyou');
 });
 
 app.get('/citabot/notify', (req, res) => {
